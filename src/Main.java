@@ -16,14 +16,18 @@ public class Main {
                     NAMES[RANDOM.nextInt(0, NAMES.length)] + "" +
                     PATRONIC_NAME[RANDOM.nextInt(0, PATRONIC_NAME.length)] + "";
 
-            EMPLOYEES[i] = new Employee(fullName, RANDOM.nextInt(1, 6), RANDOM.nextInt(50000, 100000));
+            EMPLOYEES[i] = new Employee(fullName, RANDOM.nextInt(1, 10), RANDOM.nextInt(50000, 100000));
         }
     }
 
     public static void main(String[] args) {
         initEmployees();
         print();
-        System.out.println("Сумма ЗП сотрудников: "+calculateSumOfSalaries());
+        System.out.println("Сумма ЗП сотрудников: " + calculateSumOfSalaries());
+        System.out.println("Сотрудник с мин ЗП: " + findEmployeeWithMinsalary());
+        System.out.println("Сотрудник с макс ЗП: " + findEmployeeWithMaxsalary());
+        System.out.println("Средняя ЗП: " + calculateAverageOfSalaries());
+        printFullName();
     }
 
     private static void print() {
@@ -39,6 +43,35 @@ public class Main {
             sum += employee.getSalary();
         }
         return sum;
+    }
 
+    private static Employee findEmployeeWithMinsalary() {
+        Employee employeeWithMinSalary = null;
+        for (Employee employee : EMPLOYEES) {
+            if (employeeWithMinSalary == null || employee.getSalary() < employeeWithMinSalary.getSalary()) {
+                employeeWithMinSalary = employee;
+            }
+        }
+        return employeeWithMinSalary;
+    }
+
+    private static Employee findEmployeeWithMaxsalary() {
+        Employee findEmployeeWithMaxsalary = null;
+        for (Employee employee : EMPLOYEES) {
+            if (findEmployeeWithMaxsalary == null || employee.getSalary() > findEmployeeWithMaxsalary.getSalary()) {
+                findEmployeeWithMaxsalary = employee;
+            }
+        }
+        return findEmployeeWithMaxsalary;
+    }
+
+    private static double calculateAverageOfSalaries() {
+        return (double) calculateSumOfSalaries() / EMPLOYEES.length;
+    }
+
+    private static void printFullName() {
+        for (Employee employee : EMPLOYEES) {
+            System.out.println(employee.getFullName());
+        }
     }
 }
