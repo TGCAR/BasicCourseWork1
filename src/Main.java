@@ -74,4 +74,9 @@ public class Main {
             System.out.println(employee.getFullName());
         }
     }
+
+    private static void indexationSalary() {
+        for (Employee employee)
+
+    }
 }
