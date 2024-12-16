@@ -10,6 +10,7 @@ public class Main {
 
     private final static Employee[] EMPLOYEES = new Employee[10];
 
+
     private static void initEmployees() {
         for (int i = 0; i < EMPLOYEES.length; i++) {
             String fullName = SURNAME[RANDOM.nextInt(0, SURNAME.length)] + "" +
@@ -28,6 +29,12 @@ public class Main {
         System.out.println("Сотрудник с макс ЗП: " + findEmployeeWithMaxsalary());
         System.out.println("Средняя ЗП: " + calculateAverageOfSalaries());
         printFullName();
+
+//        Индексация ЗП
+        System.out.println("Индексация зарплат на 10%  ");
+        indexSalaries(10);
+        print();
+        System.out.println("Сумма ЗП сотрудников после индексации: " + calculateSumOfSalaries());
     }
 
     private static void print() {
@@ -73,10 +80,14 @@ public class Main {
         for (Employee employee : EMPLOYEES) {
             System.out.println(employee.getFullName());
         }
-    }
-
-    private static void indexationSalary() {
-        for (Employee employee)
 
     }
+
+    private static void indexSalaries(double percent) {
+        for (Employee employee : EMPLOYEES) {
+            int newSalary = (int) (employee.getSalary() * (1 + percent / 100));
+            employee.setSalary(newSalary);
+        }
+    }
+
 }
