@@ -30,7 +30,7 @@ public class Main {
         System.out.println("Средняя ЗП: " + calculateAverageOfSalaries());
         printFullName();
 
-//        Индексация ЗП
+        System.out.println("\nИндексация ЗП:\n");
         System.out.println("Индексация зарплат на 10%  ");
         indexSalaries(10);
         print();
@@ -89,5 +89,4 @@ public class Main {
             employee.setSalary(newSalary);
         }
     }
-
 }
