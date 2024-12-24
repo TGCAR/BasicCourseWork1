@@ -1,7 +1,6 @@
 public class Employee {
 
     private static int idGenerato = 1;
-
     private final int id;
     private final String fullName;
     private int department;
